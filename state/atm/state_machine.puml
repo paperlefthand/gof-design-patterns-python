@@ -1,0 +1,22 @@
+@startuml
+' state NoCardState {
+'   
+' }
+
+[*] --> NoCardState
+state NoCardState 
+state HasCardState
+state AuthenticatedState
+state MaintenanceState
+
+NoCardState --> HasCardState : カード挿入
+HasCardState --> NoCardState : カード取り出し
+HasCardState --> AuthenticatedState : 正しいPIN入力
+HasCardState --> NoCardState : PINエラー
+AuthenticatedState --> NoCardState : 操作終了
+NoCardState --> MaintenanceState : メンテナンス開始
+HasCardState --> MaintenanceState : カードを取り出し\nメンテナンス開始
+AuthenticatedState --> MaintenanceState : カードを取り出し\nメンテナンス開始
+MaintenanceState --> NoCardState : メンテナンス終了
+
+@enduml
