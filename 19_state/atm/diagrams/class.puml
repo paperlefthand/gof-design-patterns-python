@@ -1,0 +1,39 @@
+@startuml class
+skinparam classAttributeIconSize 0
+
+class ATM {
+    -account: Account
+    -correct_pin: str
+    -_state: ATMState
+    +insert_card()
+    +eject_card()
+    +enter_pin(pin)
+    +withdraw_money(amount)
+    +enter_maintenance()
+    +exit_maintenance()
+}
+
+interface ATMState {
+    +insert_card(atm)
+    +eject_card(atm)
+    +enter_pin(atm, pin)
+    +withdraw_money(atm, amount)
+}
+
+class NoCard
+class HasCard
+class Authenticated
+class Maintenance
+
+ATMState <|.. NoCard
+ATMState <|.. HasCard
+ATMState <|.. Authenticated
+ATMState <|.. Maintenance
+ATM --> ATMState : «state»
+NoCard --> ATM : «context»
+HasCard --> ATM
+Authenticated --> ATM
+Maintenance --> ATM
+class Account
+ATM --> Account
+@enduml

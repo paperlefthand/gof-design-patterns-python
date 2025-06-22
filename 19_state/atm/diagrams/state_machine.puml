@@ -1,4 +1,4 @@
-@startuml
+@startuml state_machine
 ' state NoCardState {
 '   
 ' }

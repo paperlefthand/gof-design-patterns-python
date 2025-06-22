@@ -1,13 +1,13 @@
 [project]
-name = "item-factory"
-version = "0.0.1"
-description = "Add your description here"
+name = "atm"
+version = "0.1.0"
+description = "ATM Simulator"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = ["injector>=0.22.0", "pydantic>=2.9.2"]
+dependencies = ["pydantic>=2.11.7"]
 
 [dependency-groups]
-dev = ["pytest>=8.3.3"]
+dev = ["pytest>=8.4.1"]
 
 [tool.ruff]
 line-length = 100
