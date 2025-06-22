@@ -1,0 +1,32 @@
+@startuml class
+' ShoppingCart, Item, and PaymentStrategy system class diagram
+
+interface PaymentStrategy {
+    {abstract} +pay(amount: float): None
+}
+
+class CreditCardPayment 
+class PayPalPayment 
+class BitcoinPayment 
+
+PaymentStrategy <|.. CreditCardPayment
+PaymentStrategy <|.. PayPalPayment
+PaymentStrategy <|.. BitcoinPayment
+
+class Item {
+    +name: str
+    +price: float
+}
+
+class ShoppingCart {
+    +payment_strategy: PaymentStrategy
+    +items: List[Item]
+    +add_item(item: Item): None
+    +calculate_total(): float
+    +checkout(): None
+}
+
+ShoppingCart --> PaymentStrategy
+ShoppingCart "1" o-- "*" Item
+
+@enduml
