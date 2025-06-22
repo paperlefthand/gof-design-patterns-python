@@ -1,0 +1,17 @@
+[project]
+name = "item-factory"
+version = "0.0.1"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = ["injector>=0.22.0", "pydantic>=2.9.2"]
+
+[dependency-groups]
+dev = ["pytest-mock>=3.14.0", "pytest>=8.3.3"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
